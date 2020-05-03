@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
-## Web Component Build
+## Web Component Production Build
 To build and package the dashboard web component in on command run the following shell script using bash
 ```
 ./custombuild.sh
@@ -13,6 +13,9 @@ Once built then you can preview the webcomponent using the following command
 ```
  npx live-server preview
 ```
+
+## Web Component Dev Build & Preview
+Run `ng serve` to build and dynamically preview the component.
 
 ## Manual Build
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
