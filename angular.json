@@ -1,0 +1,208 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "common": {
+      "projectType": "library",
+      "root": "projects/common",
+      "sourceRoot": "projects/common/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/common/tsconfig.lib.json",
+            "project": "projects/common/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/common/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/common/src/test.ts",
+            "tsConfig": "projects/common/tsconfig.spec.json",
+            "karmaConfig": "projects/common/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/common/tsconfig.lib.json",
+              "projects/common/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "dashboard-presentation": {
+      "projectType": "library",
+      "root": "projects/dashboard-presentation",
+      "sourceRoot": "projects/dashboard-presentation/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/dashboard-presentation/tsconfig.lib.json",
+            "project": "projects/dashboard-presentation/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dashboard-presentation/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dashboard-presentation/src/test.ts",
+            "tsConfig": "projects/dashboard-presentation/tsconfig.spec.json",
+            "karmaConfig": "projects/dashboard-presentation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dashboard-presentation/tsconfig.lib.json",
+              "projects/dashboard-presentation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "dashboard-core": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dashboard-core",
+      "sourceRoot": "projects/dashboard-core/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/dashboard-core",
+            "index": "projects/dashboard-core/src/index.html",
+            "main": "projects/dashboard-core/src/main.ts",
+            "polyfills": "projects/dashboard-core/src/polyfills.ts",
+            "tsConfig": "projects/dashboard-core/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/dashboard-core/src/favicon.ico",
+              "projects/dashboard-core/src/assets"
+            ],
+            "styles": [
+              "projects/dashboard-core/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/dashboard-core/src/environments/environment.ts",
+                  "with": "projects/dashboard-core/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dashboard-core:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dashboard-core:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dashboard-core:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dashboard-core/src/test.ts",
+            "polyfills": "projects/dashboard-core/src/polyfills.ts",
+            "tsConfig": "projects/dashboard-core/tsconfig.spec.json",
+            "karmaConfig": "projects/dashboard-core/karma.conf.js",
+            "assets": [
+              "projects/dashboard-core/src/favicon.ico",
+              "projects/dashboard-core/src/assets"
+            ],
+            "styles": [
+              "projects/dashboard-core/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dashboard-core/tsconfig.app.json",
+              "projects/dashboard-core/tsconfig.spec.json",
+              "projects/dashboard-core/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/dashboard-core/e2e/protractor.conf.js",
+            "devServerTarget": "dashboard-core:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dashboard-core:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "dashboard-core"
+}
