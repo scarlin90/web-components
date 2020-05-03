@@ -1,25 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, ApplicationRef, isDevMode } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 import { DashboardRootComponent } from './dashboard-root/dashboard-root.component';
 
 @NgModule({
-  declarations: [
-    DashboardRootComponent
-  ],
+  declarations: [DashboardRootComponent],
   imports: [
     BrowserModule,
   ],
-  entryComponents: [
-    DashboardRootComponent
-  ],
   providers: [],
+  entryComponents: [DashboardRootComponent],
 })
 export class AppModule {
   constructor(injector: Injector) {
-    const dashboardElement = createCustomElement(DashboardRootComponent, {injector});
-    customElements.define('dashboard-root', dashboardElement);
+    if (!isDevMode()) {
+      const dashboardElement = createCustomElement(DashboardRootComponent, {injector});
+      customElements.define('dashboard-root', dashboardElement);
+    }
   }
-  ngDoBootstrap() {}
+
+  ngDoBootstrap(app: ApplicationRef) {
+    if (isDevMode()) {
+        app.bootstrap(DashboardRootComponent);
+    }
+  }
 }
