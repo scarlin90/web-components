@@ -1,0 +1,2 @@
+#!/bin/sh
+ng build dashboard-core --prod --output-hashing=none && cat dist/dashboard-core/runtime-es2015.js dist/dashboard-core/polyfills-es2015.js dist/dashboard-core/main-es2015.js > preview/dashboard-core.js
