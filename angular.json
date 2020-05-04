@@ -108,7 +108,8 @@
               "projects/dashboard-core/src/assets"
             ],
             "styles": [
-              "projects/dashboard-core/src/styles.scss"
+              "projects/dashboard-core/src/styles.scss",
+              "projects/global.scss"
             ],
             "scripts": []
           },
