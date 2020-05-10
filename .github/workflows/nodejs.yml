@@ -7,11 +7,9 @@ on:
   push:
     branches: 
       - master
-      - Add-Jest
   pull_request:
     branches: 
       - master
-      - Add-Jest
 
 jobs:
   build:
