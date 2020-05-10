@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DashboardPresentationComponent should render snapshot correctly 1`] = `
+<lib-dashboard-presentation>
+  <p>
+     dashboard-presentation works! 
+  </p>
+</lib-dashboard-presentation>
+`;
