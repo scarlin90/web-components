@@ -5,9 +5,13 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      - master
+      - Add-Jest
   pull_request:
-    branches: [ master ]
+    branches: 
+      - master
+      - Add-Jest
 
 jobs:
   build:
@@ -27,4 +31,4 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run lint
-    - run: npm run test
+    - run: npm run test --detectOpenHandles
