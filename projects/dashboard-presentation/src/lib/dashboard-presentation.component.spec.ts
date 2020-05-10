@@ -22,4 +22,8 @@ describe('DashboardPresentationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render snapshot correctly', () => {
+    expect(fixture).toMatchSnapshot(); // This is the snapshot validation
+  });
 });

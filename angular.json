@@ -22,11 +22,9 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/common/src/test.ts",
-            "tsConfig": "projects/common/tsconfig.spec.json",
-            "karmaConfig": "projects/common/karma.conf.js"
+            "tsConfig": "tsconfig.spec.json",
           }
         },
         "lint": {
@@ -62,11 +60,9 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/dashboard-presentation/src/test.ts",
-            "tsConfig": "projects/dashboard-presentation/tsconfig.spec.json",
-            "karmaConfig": "projects/dashboard-presentation/karma.conf.js"
+            "tsConfig": "tsconfig.spec.json",
           }
         },
         "lint": {
@@ -162,12 +158,10 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/dashboard-core/src/test.ts",
-            "polyfills": "projects/dashboard-core/src/polyfills.ts",
-            "tsConfig": "projects/dashboard-core/tsconfig.spec.json",
-            "karmaConfig": "projects/dashboard-core/karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
             "assets": [
               "projects/dashboard-core/src/favicon.ico",
               "projects/dashboard-core/src/assets"
